@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4fadf2bf374541c9a1660c8c7940ef22 }}/nivashns/cicd-test:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4fadf2bf374541c9a1660c8c7940ef22 }}/nivashns/cicd-test:latest
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'cicd-web'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_baaea08d083a439280507c96d86167c6 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4fadf2bf374541c9a1660c8c7940ef22 }}/nivashns/cicd-test:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4fadf2bf374541c9a1660c8c7940ef22 }}/nivashns/cicd-test:latest'
