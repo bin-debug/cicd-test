@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_31493ddeb89c49ce9af34eafd4b55de8 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_7f2da585751b4d61a3319760ea5843ca }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1c7606a6483d4c9ebb8451bbce6537fe }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_cf01f44aa0de47589951594e59b95c23 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_31493ddeb89c49ce9af34eafd4b55de8 }}/nivashns/cicd-test:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_1c7606a6483d4c9ebb8451bbce6537fe }}/nivashns/cicd-test:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'cicd-web'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d13d190ae6a04c2c912dcdce64b7fbe7 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_31493ddeb89c49ce9af34eafd4b55de8 }}/nivashns/cicd-test:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6034cca69c834661ba4221941c929567 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_1c7606a6483d4c9ebb8451bbce6537fe }}/nivashns/cicd-test:${{ github.sha }}'
