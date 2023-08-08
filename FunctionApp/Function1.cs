@@ -22,7 +22,9 @@ namespace FunctionApp
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
-            response.WriteString("Welcome to Azure Functions!");
+            string testEnv = System.Environment.GetEnvironmentVariable("TestKey");
+
+            response.WriteString($"Welcome to Azure Functions! --- {testEnv}");
 
             return response;
         }
